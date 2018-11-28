@@ -392,12 +392,13 @@ object SrlExtraction {
   val componentEdgeLabels = Set("rcmod", "infmod", "partmod", "ref", "prepc_of", "advcl")
   val forbiddenEdgeLabel = Set("appos", "punct", "cc") ++ componentEdgeLabels
   def fromFrame(dgraph: DependencyGraph)(frame: Frame): Option[SrlExtraction] = {
+    //System.err.println("From frame: " + frame)
     val argsNotBoundaries = frame.arguments.filterNot { arg =>
       arg.role match {
         case Roles.AM_MNR => true
         case Roles.AM_MOD => true
         case Roles.AM_NEG => true
-        case Roles.AM_ADV => true
+//        case Roles.AM_ADV => true
         case _: Roles.C => true
         case _ => false
       }
